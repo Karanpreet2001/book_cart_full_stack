@@ -13,6 +13,7 @@ import React, {useState, useEffect} from 'react';
     const [books,setBooks]=useState([]);
     const [cartItems, setCartItems] = useState([]);
     const [selectedItem, setSelectedItem] = useState();
+    const [newBook, setNewBook]=useState({});
   
 
  useEffect(()=>{
@@ -75,7 +76,41 @@ import React, {useState, useEffect} from 'react';
       // setCartItems(selectedItem.map((item) => item._id === product._id ? { ...productExist, quantity: productExist.quantity + 1 } : item));
   
     }
+
+
+    const handleDeleteDB=(book)=>{
+    
+
+      console.log("Book Deleted");
+
+    const {data}=axios.delete("http://localhost:5000/api/CartBookInfo/"+book._id);
+
+    const newBooks=books.filter((b)=>b._id !== book._id);
+
+    console.log(data, newBooks);
+    setBooks([...newBooks]);
+    }
+
+    const handleEditDB=()=>{
+      console.log("Edit");
+    }
   
+    const handleAddDB=()=>{
+      console.log("ADD");
+
+      console.log(newBook);
+      const {data}= axios.post("http://localhost:5000/api/CartBookInfo",newBook);
+      console.log(data);
+  
+      if(typeof data==='object'){
+        const book=data;
+        console.log(book);
+        const newBooks=[...books,book];
+        setBooks([...newBooks]);
+      }else{
+        console.log("Can not add Objrct");
+      }
+    }
   
     return (
     <div>
@@ -84,7 +119,7 @@ import React, {useState, useEffect} from 'react';
       <Router>
         <Header cartItems={cartItems}/>
         <Routess productItems={books} cartItems = {cartItems} 
-            handleAddProduct={handleAddProduct} handleRemoveProduct={handleRemoveProduct} handleChangeItem={handleChangeItem}/>
+            handleAddProduct={handleAddProduct} handleRemoveProduct={handleRemoveProduct} handleChangeItem={handleChangeItem} onEditDB={handleEditDB} onDeleteDB={handleDeleteDB} newBook={newBook} onAddDB={handleAddDB}/>
       </Router>
   
       </div>

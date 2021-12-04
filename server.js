@@ -151,38 +151,40 @@ app.put("/api/CartBookInfo/:title",async (req,res)=>{
     }
 });
 
-// // delete
+// delete
 
-// app.delete("/api/BookInfo/:id",async (req,res)=>{
+app.delete("/api/CartBookInfo/:id",async (req,res)=>{
 
-//     try{
+    try{
 
-//        let _id= req.params.id;
-//        _id=mongoose.Types.ObjectId(_id);
+
+       let _id= req.params.id;
+       _id=mongoose.Types.ObjectId(_id);
+       console.log(_id);
         
     
 
-//         await mongoose.connect(url);
-//         console.log("datababse Connected");
+        await mongoose.connect(url);
+        console.log("datababse Connected");
 
-//         Book.deleteOne(
-//             {_id:_id},
-//             (err)=>{
-//                 if(err) {
-//                     console.log(err);
-//                     res.send(err);
-//             }else{
-//                 res.send("Updated successFully");
-//                 mongoose.connection.close();
+        Book.deleteOne(
+            {_id:_id},
+            (err)=>{
+                if(err) {
+                    console.log(err);
+                    res.send(err);
+            }else{
+                res.send("Updated successFully");
+                mongoose.connection.close();
 
-//             }
-//             });
+            }
+            });
 
-//     }catch(err){
-//         console.log(error);
+    }catch(err){
+        console.log(error);
         
-//     }
-// });
+    }
+});
 
 app.listen(5000,()=>{
     console.log("Server is up and listening at 5000")
