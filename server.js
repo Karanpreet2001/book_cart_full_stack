@@ -74,7 +74,7 @@ app.post("/api/CartBookInfo",async (req,res)=>{
         })
 
     }catch(err){
-        console.log(error);
+        console.log(err);
         
     }
 });
@@ -111,7 +111,7 @@ app.put("/api/CartBookInfo/:id",async (req,res)=>{
             });
 
     }catch(err){
-        console.log(error);
+        console.log(err);
         
     }
 });
@@ -146,7 +146,7 @@ app.put("/api/CartBookInfo/:title",async (req,res)=>{
             });
 
     }catch(err){
-        console.log(error);
+        console.log(err);
         
     }
 });
@@ -181,7 +181,7 @@ app.delete("/api/CartBookInfo/:id",async (req,res)=>{
             });
 
     }catch(err){
-        console.log(error);
+        console.log(err);
         
     }
 });

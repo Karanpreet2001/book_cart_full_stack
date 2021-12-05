@@ -1,16 +1,11 @@
 import React from 'react';
 
-
-
-
 const Admin = ({newBook, books, onEditDB, onDeleteDB, onAddDB}) => {
     console.log(books);
-
 
     const handleChange=(e)=>{
         const target=e.target;
         
-
         if(target.id==="title")
             newBook.title=target.value;
             if(target.id==="author")
@@ -27,60 +22,86 @@ const Admin = ({newBook, books, onEditDB, onDeleteDB, onAddDB}) => {
             newBook.image=target.value;
             if(target.id==="price")
             newBook.price=target.value;
-       
     }
-
 
     return ( 
         <div>
         <div>
-        <h1>Please enter your details here..</h1>
-
+        <h2>Add new book</h2>
         <form>
-        <div className="form-group">
-                <label htmlFor="bid">Book ID</label>
-                <input type="text" name="bid" id="bid" className = "form-control w-25 p-3" onChange = {handleChange}/>
-        </div>
-        <div className="form-group">
-                <label htmlFor="title">Book Name</label>
-                <input type="text" name="title" id="title" className = "form-control w-25 p-3" onChange = {handleChange}/>
-        </div>
-        <div className="form-group">
-                <label htmlFor="author">Writer</label>
-                <input type="text" name="author" id="author" className = "form-control w-25 p-3" onChange = {handleChange}/>
-        </div>
-        <div className="form-group">
-                <label htmlFor="publishYear">Publish Year</label>
-                <input type="text" name="publishYear" id="publishYear" className = "form-control w-25 p-3" onChange = {handleChange}/>
-        </div>
-        <div className="form-group">
-                <label htmlFor="numberInStock">Number of Books</label>
-                <input type="number" name="numberInStock" id="numberInStock" className = "form-control w-25 p-3" onChange = {handleChange}/>
-        </div>
-        <div className="form-group">
-                <label htmlFor="category">Category</label>
-                <input type="text" name="category" id="category" className = "form-control w-25 p-3" onChange = {handleChange}/>
-        </div>
-        <div className="form-group">
-                <label htmlFor="image">Images</label>
-                <input type="text" name="image" id="image" className = "form-control w-25 p-3" onChange = {handleChange}/>
-        </div>
-        <div className="form-group">
-                <label htmlFor="price">Price</label>
-                <input type="text" name="price" id="price" className = "form-control w-25 p-3" onChange = {handleChange}/>
-        </div>
-        </form>
+           <table className="table">
+              <tr>
+                <td>
+                   <div className="form-group">
+                        <label htmlFor="bid">Book ID</label>
+                        <input type="text" name="bid" id="bid" className="form-control " value={newBook._id} onChange={handleChange} />
+                   </div>
+                </td>
+                <td>
+                   <div className="form-group">
+                        <label htmlFor="title">Book Name</label>
+                        <input type="text" name="title" id="title" className="form-control" value={newBook.title} onChange={handleChange} />
+                   </div>
+                </td>
+                <td>
+                   <div className="form-group">
+                        <label htmlFor="author">Writer</label>
+                        <input type="text" name="author" id="author" className="form-control" value={newBook.author} onChange={handleChange} />
+                   </div>
+                </td>
+                <td>
+                   <div className="form-group">
+                        <label htmlFor="publishYear">Publish Year</label>
+                        <input type="text" name="publishYear" id="publishYear" className="form-control" value={newBook.publishYear} onChange={handleChange} />
+                   </div>
+                </td>
+                <td>
+                   <div className="form-group">
+                        <label htmlFor="numberInStock">Number of Books</label>
+                        <input type="number" name="numberInStock" id="numberInStock" className="form-control " value={newBook.numberInStock} onChange={handleChange} />
+                   </div>
+                </td>
 
-        <button
-            type="button" onClick={()=>onAddDB()} className = "btn btn-primary m-2">
-                Add
-            </button>
-        
+                <td>
+                   <div className="form-group">
+                        <label htmlFor="category">Category</label>
+                        <input type="text" name="category" id="category" className="form-control " value={newBook.category} onChange={handleChange} />
+                   </div>
+                </td>
+
+                <td>
+                   <div className="form-group">
+                        <label htmlFor="image">Images</label>
+                        <input type="text" name="image" id="image" className="form-control " value={newBook.image} onChange={handleChange} />
+                   </div>
+                </td>
+
+                <td>
+                        <div className="form-group">
+                                <label htmlFor="price">Price</label>
+                                <input type="text" name="price" id="price" className="form-control " value={newBook.price} onChange={handleChange} />
+                        </div>
+                </td>
+
+                <td>
+                        <div className="form-group">
+                                <button
+                                        type="button" onClick={() => onAddDB()} className="btn btn-primary m-2">
+                                        Add
+                                </button>
+                        </div>
+
+                </td>
+              </tr>
+           </table>
+        </form>
         </div>
+
         <div>
               <table className="table">
                 <thead>
                     <tr className="table-primary">
+                    <td>Book ID</td>
                     <td>Book Name</td>
                     <td>Writer</td>
                     <td>Number of Books</td>
@@ -92,11 +113,12 @@ const Admin = ({newBook, books, onEditDB, onDeleteDB, onAddDB}) => {
 
                 <tbody>
                     {books.map(book=>( <tr className="table-light" key={book._id}>
+                        <td>{book._id}</td>
                         <td>{book.title}</td>
                         <td>{book.author}</td>
                         <td>{book.numberInStock}</td>
                         <td>{book.publishYear}</td>
-                        <td><button type="button" className="btn btn-warning btn-sm" onClick={()=>onEditDB(book)}>Edit</button></td>
+                        <td><button type="button" className="btn btn-warning btn-sm" onClick={()=>onEditDB(book._id)}>Edit</button></td>
                         <td><button type="button" className="btn btn-danger btn-sm" onClick={()=>onDeleteDB(book)}>Delete</button></td>
                         </tr>))
                     }

@@ -52,7 +52,7 @@ import React, {useState, useEffect} from 'react';
 
       console.log(product);
       console.log("Updated Book");
-      const {data}= axios.put("http://localhost:5000/api/CartBookInfo/"+product.title);
+      const {data}= axios.put("http://localhost:5000/api/CartBookInfo/"+product._id);
       console.log(data);
 
       const productExist = cartItems.find((item) => item.bid === product.bid);
@@ -91,7 +91,14 @@ import React, {useState, useEffect} from 'react';
     setBooks([...newBooks]);
     }
 
-    const handleEditDB=()=>{
+    const handleEditDB=(product)=>{
+      const { data } = axios.put("http://localhost:5000/api/CartBookInfo/" + product.bid);
+      const productExist = books.find((item) => item._id === product._id);
+      console.log(data, productExist);
+
+
+      // const index = data.indexOf(data._id);
+      // const selectedProduct = data[index];
       console.log("Edit");
     }
   
