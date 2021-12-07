@@ -37,12 +37,13 @@ export const Cart = ({props, cartItems, handleAddProduct, handleRemoveProduct, h
                 </tbody>
                 </table>
             </div>
-            <div className="m-2 text-center"><h5>Total: ${totalPrice}</h5>
+            <div className="m-2 text-center"><h5>Total: ${totalPrice.toFixed(2)}</h5>
             </div>
             <div className="container my-3 bg-light">
                 <div className="col-md-12 text-center">
                     {/* {cartItems.length >= 1 && (<button className="btn btn-danger m-2 " onClick={handleClearCart}>Clear Cart</button>)} */}
                         <Link to="/"><button type="button" className="btn btn-primary m-2">Home</button></Link>
+                    <Link to="/payment" state={{ prodPrice: totalPrice }}><button type="button" className="btn btn-danger m-2">Check Out</button></Link>
                 </div>
             </div>
         </div>

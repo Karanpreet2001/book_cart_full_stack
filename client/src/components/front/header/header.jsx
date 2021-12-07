@@ -28,8 +28,11 @@ const Header = ({cartItems}) => {
                   <Link className="nav-link" to="/signin">Sign In</Link>
                 </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/admin">Admin</Link>
+                  <Link className="nav-link invisible" to="/admin">Admin</Link>
               </li>
+                <li className="nav-item invisible" >
+                  <Link className="nav-link" to="/payment">Payment</Link>
+                </li>
             </ul>
           </div>
             <Link to='/cart' >

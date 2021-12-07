@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const SignIn = () => {
 
     const [user, setUser] = useState({
-        userid: '', password: ''
+        userid: '', password: '',
     });
 
     let check = false;
@@ -13,13 +13,13 @@ const SignIn = () => {
     const handleChange = (e) => {
         //e.preventDefault();
         const target = e.target;
-        console.log(e.target);
+        console.log(target);
 
         if (target.id === "inputEmail")
             user.userid = target.value;
         if (target.id === "inputPassword")
             user.password = target.value;
-
+        setUser(user);
 
         console.log(user);
     }
@@ -29,6 +29,7 @@ const SignIn = () => {
         if (user.userid == 'suzuka@gmail.com' && user.password == "sue") {
             <Link to="/admin"></Link>
         } else {
+            alert("ID: " + user.userid + "password: " + user.password);
             <Link to="/signin"></Link>
         }
     }
@@ -37,7 +38,7 @@ const SignIn = () => {
 
         <div className="d-flex justify-content-center align-items-center container ">
             <form>
-                <h3 className="display-5 text-center p-1">Sign In</h3>
+                <h3 className="display-5 text-center p-1">Log In</h3>
                 <div className="row mb-3">
                     <label htmlFor="inputEmail" className="col-sm-2 col-form-label mx-3">Email</label>
                     <div className="col-sm-10">
@@ -52,7 +53,7 @@ const SignIn = () => {
                 </div>
                 <div className="row">
                     <div className="col-sm-10 offset-sm-4">
-                        <button type="submit" className="btn btn-primary" onClick={isLoggedIn()}>Sign in</button>
+                        <button type="submit" className="btn btn-primary" onClick={() => isLoggedIn()}>Sign in</button>
                     </div>
                 </div>
             </form>

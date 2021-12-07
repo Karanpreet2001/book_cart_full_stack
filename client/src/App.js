@@ -64,9 +64,9 @@ import React, {useState, useEffect} from 'react';
       }
     };
   
-    const handleClearCart = () => {
-      setCartItems([]);
-    }
+    // const handleClearCart = () => {
+    //   setCartItems([]);
+    // }
   
     const handleChangeItem = (product) => {
       const productExist = selectedItem.find((item) => item._id === product._id);

@@ -83,7 +83,7 @@ const Admin = ({newBook, books, onEditDB, onDeleteDB, onAddDB, onSubmit, onChang
                      <td>
                         <div className="form-group">
                            <label htmlFor="image">Images</label>
-                           <input type="text" name="image" id="image" className="form-control " value={newBook.image} placeholder="./img/b000.jpg" onChange={handleChange} />
+                           <input type="text" name="image" id="image" className="form-control " value={newBook.image} placeholder="../img/b000.jpg" onChange={handleChange} />
                         </div>
                      </td>
 

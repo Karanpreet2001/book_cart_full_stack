@@ -6,6 +6,7 @@ import SignIn from "../front/signin";
 import { Cart } from '../front/cart';
 import ProductDetails from '../front/product/productdetails';
 import Contact from '../front/product/contact';
+import Payment from '../front/payment';
 
 const Routess = ({ productItems, cartItems, handleAddProduct, handleRemoveProduct, handleClearCart, onDeleteDB, onEditDB, newBook, onAddDB}) => {
     return (
@@ -20,6 +21,7 @@ const Routess = ({ productItems, cartItems, handleAddProduct, handleRemoveProduc
 
               <Route path="/admin" exact element={<Admin books= {productItems} onEditDB={onEditDB}  onDeleteDB={onDeleteDB} newBook={newBook} onAddDB={onAddDB}/>}/>
               <Route path="/signin" exact element={<SignIn />} />
+          <Route path="/payment" exact element={<Payment />} />
             </Routes>
         </div>
       );
