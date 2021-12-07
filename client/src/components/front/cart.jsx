@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-// import "./cart.css";
 export const Cart = ({props, cartItems, handleAddProduct, handleRemoveProduct, handleClearCart}) => {
     const [carts, setCarts] = useState([]);
     const totalPrice = cartItems.reduce((price, item) => price + item.quantity * item.price, 0);
@@ -20,10 +19,10 @@ export const Cart = ({props, cartItems, handleAddProduct, handleRemoveProduct, h
                             <img key={product.bid} src={product.image} alt={product.title} width='150px' />
                         </td>
                         <td>
-                                <h4>{product.title}</h4>
+                            <h4>{product.title}</h4>
                         </td>
                         <td >
-                                <h4>${product.price}</h4>
+                            <h4>${product.price}</h4>
                         </td>
 
                         <td >
@@ -42,15 +41,10 @@ export const Cart = ({props, cartItems, handleAddProduct, handleRemoveProduct, h
             </div>
             <div className="container my-3 bg-light">
                 <div className="col-md-12 text-center">
-                    {cartItems.length >= 1 && (<button className="btn btn-danger m-2 " onClick={handleClearCart}>Clear Cart</button>)}
-                   
+                    {/* {cartItems.length >= 1 && (<button className="btn btn-danger m-2 " onClick={handleClearCart}>Clear Cart</button>)} */}
                         <Link to="/"><button type="button" className="btn btn-primary m-2">Home</button></Link>
-                    
                 </div>
-                
             </div>
-
         </div>
-      
     );
 };

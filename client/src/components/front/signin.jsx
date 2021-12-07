@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 const SignIn = () => {
 
-
     const [user, setUser] = useState({
         userid: '', password: ''
     });
@@ -39,31 +38,25 @@ const SignIn = () => {
         <div className="d-flex justify-content-center align-items-center container ">
             <form>
                 <h3 className="display-5 text-center p-1">Sign In</h3>
-
                 <div className="row mb-3">
-                    <label htmlfor="inputEmail" className="col-sm-2 col-form-label mx-3">Email</label>
+                    <label htmlFor="inputEmail" className="col-sm-2 col-form-label mx-3">Email</label>
                     <div className="col-sm-10">
-                        <input type="email" class="form-control" name="inputEmail" id="inputEmail" placeholder="Email" onChange={handleChange} />
+                        <input type="email" className="form-control" name="inputEmail" id="inputEmail" placeholder="Email" onChange={handleChange} />
                     </div>
                 </div>
                 <div className="row mb-3">
-                    <label htmlfor="inputPassword" className="col-sm-3 col-form-label mx-3">Password</label>
+                    <label htmlFor="inputPassword" className="col-sm-3 col-form-label mx-3">Password</label>
                     <div className="col-sm-10">
                         <input type="password" className="form-control" name="inputPassword" id="inputPassword" placeholder="Password" onChange={handleChange} />
                     </div>
                 </div>
-
                 <div className="row">
                     <div className="col-sm-10 offset-sm-4">
-                        <button type="submit" class="btn btn-primary" onClick={isLoggedIn()}>Sign in</button>
-
-
+                        <button type="submit" className="btn btn-primary" onClick={isLoggedIn()}>Sign in</button>
                     </div>
                 </div>
-
             </form>
         </div>
-
     );
 }
 

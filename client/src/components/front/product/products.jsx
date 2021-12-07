@@ -1,19 +1,16 @@
 import React, {useState, useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Link } from 'react-router-dom';
-import queryString from 'query-string';
 // import b101 from '../img';
 
 
 const Products = ({ productsItems, handleAddProduct, handleChangeItem, location}) => {
-
 
     return ( 
         <div className="bg-light m-4">
             {console.log(productsItems)}
             {productsItems.map((product, key)=>(       
                 <div className="m-4" key={product._id}>
-
                     <table className="table bg-light m-2">
                         <tbody className="">
                             <tr key={product.bid} >
@@ -34,11 +31,7 @@ const Products = ({ productsItems, handleAddProduct, handleChangeItem, location}
                         </tbody>
                     </table>
                 </div>   
-
-
-                
             ))}
-
         </div>
      );
 }

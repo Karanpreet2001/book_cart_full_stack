@@ -1,5 +1,4 @@
 
-
 const express= require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -7,11 +6,9 @@ const cors=require("cors");
 const Book=require("./model/book.js");
 
 
-
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cors());
-
 
 const url="mongodb://localhost:27017/CartBooksDB";
 
@@ -32,20 +29,16 @@ app.get("/api/CartBookInfo",async (req,res)=>{
         })
 
     }catch(err){
-        console.log(error);
-        
+        console.log(error);   
     }
 });
-
 
 // create data
 
 app.post("/api/CartBookInfo",async (req,res)=>{
 
     try{
-
        
-        
         const {bid,title,category,author,numberInStock,price,publishYear,image} = req.body;
 
         const book = new Book({
@@ -74,14 +67,12 @@ app.post("/api/CartBookInfo",async (req,res)=>{
         })
 
     }catch(err){
-        console.log(err);
-        
+        console.log(err);      
     }
 });
 
 
 // //update 1
-
 
 app.put("/api/CartBookInfo/:id",async (req,res)=>{
 
@@ -106,16 +97,13 @@ app.put("/api/CartBookInfo/:id",async (req,res)=>{
                 
                 res.send("Updated successFully");
                 mongoose.connection.close();
-
             }
             });
 
     }catch(err){
         console.log(err);
-        
     }
 });
-
 
 
 app.put("/api/CartBookInfo/:title",async (req,res)=>{
@@ -141,13 +129,11 @@ app.put("/api/CartBookInfo/:title",async (req,res)=>{
                 
                 res.send("Updated successFully");
                 mongoose.connection.close();
-
             }
             });
 
     }catch(err){
-        console.log(err);
-        
+        console.log(err);        
     }
 });
 
@@ -157,13 +143,10 @@ app.delete("/api/CartBookInfo/:id",async (req,res)=>{
 
     try{
 
-
        let _id= req.params.id;
        _id=mongoose.Types.ObjectId(_id);
        console.log(_id);
         
-    
-
         await mongoose.connect(url);
         console.log("datababse Connected");
 
@@ -176,13 +159,11 @@ app.delete("/api/CartBookInfo/:id",async (req,res)=>{
             }else{
                 res.send("Updated successFully");
                 mongoose.connection.close();
-
             }
             });
 
     }catch(err){
-        console.log(err);
-        
+        console.log(err);     
     }
 });
 

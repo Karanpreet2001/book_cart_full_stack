@@ -1,11 +1,10 @@
 import React, {useState, useEffect} from 'react';
   import Header from './components/front/header/header';
-  import {getBooks} from "./data/data";
+  // import {getBooks} from "./data/data";
   import {BrowserRouter as Router} from 'react-router-dom';
   import 'bootstrap/dist/css/bootstrap.css';
   import Routess from './components/Routes/Routess';
   import axios from 'axios';
-
 
 
   function App() {
@@ -16,18 +15,18 @@ import React, {useState, useEffect} from 'react';
     const [newBook, setNewBook]=useState({});
   
 
- useEffect(()=>{
-   axios
-    .get("http://localhost:5000/api/CartBookInfo")
-    .then(resp=>{
-      console.log(resp,resp.data);
-      setBooks(resp.data);
-    })
-    .catch(err=>{
-      console.log(err);
-    })
+  useEffect(()=>{
+    axios
+      .get("http://localhost:5000/api/CartBookInfo")
+      .then(resp=>{
+        console.log(resp,resp.data);
+        setBooks(resp.data);
+      })
+      .catch(err=>{
+        console.log(err);
+      })
 
- },[]); 
+  },[]); 
 
 
 
@@ -74,7 +73,6 @@ import React, {useState, useEffect} from 'react';
       setCartItems([...selectedItem, { ...product, quantity: 1 }]); //new item is added if cart is empty
   
       // setCartItems(selectedItem.map((item) => item._id === product._id ? { ...productExist, quantity: productExist.quantity + 1 } : item));
-  
     }
 
 
@@ -136,5 +134,3 @@ import React, {useState, useEffect} from 'react';
   }
   
   export default App;
-
-
