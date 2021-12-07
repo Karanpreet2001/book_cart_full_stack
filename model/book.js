@@ -22,6 +22,7 @@ const bookSchema = new mongoose.Schema({
     },
     numberInStock:{
         type:Number,
+        min: 0,
         required:[true,"Please enter Number of book in stock"]
     },
     price:{

@@ -1,11 +1,15 @@
 import React from 'react';
 
-const Admin = ({newBook, books, onEditDB, onDeleteDB, onAddDB}) => {
+const Admin = ({newBook, books, onEditDB, onDeleteDB, onAddDB, onSubmit, onChange}) => {
     console.log(books);
 
     const handleChange=(e)=>{
         const target=e.target;
-        
+
+       const newData = { ...books }
+       newData[target.id] = target.value
+      //  setData(newData);
+
         if(target.id==="title")
             newBook.title=target.value;
             if(target.id==="author")
@@ -22,19 +26,25 @@ const Admin = ({newBook, books, onEditDB, onDeleteDB, onAddDB}) => {
             newBook.image=target.value;
             if(target.id==="price")
             newBook.price=target.value;
+            console.log(newBook.bid);
+    }
+
+    const handleSubmit = (e) => {
+       e.preventDefault();
+       console.log("Submit");
     }
 
     return ( 
         <div>
         <div>
-        <h2>Add new book</h2>
-        <form>
+             <h3 className="display-5 text-center p-1">Add New Book</h3>
+        <form onSubmit = {handleSubmit}> 
            <table className="table">
               <tr>
                 <td>
                    <div className="form-group">
                         <label htmlFor="bid">Book ID</label>
-                        <input type="text" name="bid" id="bid" className="form-control " value={newBook._id} onChange={handleChange} />
+                        <input type="text" name="bid" id="bid" className="form-control " value={newBook._id} placeholder="b000" onChange={handleChange} />
                    </div>
                 </td>
                 <td>
@@ -51,8 +61,8 @@ const Admin = ({newBook, books, onEditDB, onDeleteDB, onAddDB}) => {
                 </td>
                 <td>
                    <div className="form-group">
-                        <label htmlFor="publishYear">Publish Year</label>
-                        <input type="text" name="publishYear" id="publishYear" className="form-control" value={newBook.publishYear} onChange={handleChange} />
+                        <label htmlFor="publishYear">Publish Date</label>
+                        <input type="text" name="publishYear" id="publishYear" className="form-control" value={newBook.publishYear} placeholder="2000-12-01" onChange={handleChange} />
                    </div>
                 </td>
                 <td>
@@ -72,7 +82,7 @@ const Admin = ({newBook, books, onEditDB, onDeleteDB, onAddDB}) => {
                 <td>
                    <div className="form-group">
                         <label htmlFor="image">Images</label>
-                        <input type="text" name="image" id="image" className="form-control " value={newBook.image} onChange={handleChange} />
+                        <input type="text" name="image" id="image" className="form-control " value={newBook.image} placeholder="./img/b000.jpg" onChange={handleChange} />
                    </div>
                 </td>
 
@@ -85,6 +95,7 @@ const Admin = ({newBook, books, onEditDB, onDeleteDB, onAddDB}) => {
 
                 <td>
                         <div className="form-group">
+                           <br></br>
                                 <button
                                         type="button" onClick={() => onAddDB()} className="btn btn-primary m-2">
                                         Add
@@ -113,7 +124,7 @@ const Admin = ({newBook, books, onEditDB, onDeleteDB, onAddDB}) => {
 
                 <tbody>
                     {books.map(book=>( <tr className="table-light" key={book._id}>
-                        <td>{book._id}</td>
+                        <td>{book.bid}</td>
                         <td>{book.title}</td>
                         <td>{book.author}</td>
                         <td>{book.numberInStock}</td>

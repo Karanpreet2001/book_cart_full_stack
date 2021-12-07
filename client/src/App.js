@@ -60,7 +60,7 @@ import React, {useState, useEffect} from 'react';
         setCartItems(cartItems.filter((item) => item.bid !== product.bid));
       }
       else{
-        setCartItems(cartItems.map((item) => item._id === product._id ? {...productExist, quantity: productExist.quantity - 1}: item
+        setCartItems(cartItems.map((item) => item.bid === product.bid ? {...productExist, quantity: productExist.quantity - 1}: item
         ));
       }
     };
@@ -92,8 +92,10 @@ import React, {useState, useEffect} from 'react';
     }
 
     const handleEditDB=(product)=>{
+      // let list = books;
       const { data } = axios.put("http://localhost:5000/api/CartBookInfo/" + product.bid);
       const productExist = books.find((item) => item._id === product._id);
+      books.push(productExist);
       console.log(data, productExist);
 
 

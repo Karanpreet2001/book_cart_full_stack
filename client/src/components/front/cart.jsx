@@ -8,36 +8,48 @@ export const Cart = ({props, cartItems, handleAddProduct, handleRemoveProduct, h
     
     return (
         <div>
-            <h2>Cart Items</h2>
-            <div>{cartItems.length >= 1 && (<button onClick={handleClearCart}>Clear Cart</button>)}</div>
-            {cartItems.length === 0 && (<div>No item is added</div>)}
+            <h3 className="display-5 text-center p-1">Cart Items</h3>
+            
+            {cartItems.length === 0 && (<div className="m-2 text-center">No item is added</div>)}
             <div>
+                <table className="table m-4">
+                <tbody>
                 {cartItems.map((product) => (
-                    <div key={product.bid}>
-                        <img key={product.bid} src={product.image} alt={product.title} width='150px' />
-                        <div>
-                            <h4>{product.title}</h4>
-                        </div>
-                        <div>
-                            <h4>{product.price}</h4>
-                        </div>
-                        <div>
-                            <button onClick={() => handleAddProduct(product)}>+</button>
-                            <button onClick={() => handleRemoveProduct(product)}>-</button>
-                        </div>
-                        <div>
-                            {product.quantity} * ${product.price}
-                        </div>
+                    <tr key={product.bid}>
+                        <td >
+                            <img key={product.bid} src={product.image} alt={product.title} width='150px' />
+                        </td>
+                        <td>
+                                <h4>{product.title}</h4>
+                        </td>
+                        <td >
+                                <h4>${product.price}</h4>
+                        </td>
 
-                    </div>
+                        <td >
+                            <button className="btn btn-warning btn-lg p-2 m-1" onClick={() => handleAddProduct(product)}>＋</button><br></br>
+                            <button className="btn btn-warning btn-lg p-2 m-1 " onClick={() => handleRemoveProduct(product)}>ー</button>
+                        </td>
+                        <td className="p-2">
+                            {product.quantity} x ${product.price}
+                        </td>                  
+                    </tr>
                 ))}
+                </tbody>
+                </table>
             </div>
-            <div>Total: 
-                <div>${totalPrice}</div>
+            <div className="m-2 text-center"><h5>Total: ${totalPrice}</h5>
+            </div>
+            <div className="container my-3 bg-light">
+                <div className="col-md-12 text-center">
+                    {cartItems.length >= 1 && (<button className="btn btn-danger m-2 " onClick={handleClearCart}>Clear Cart</button>)}
+                   
+                        <Link to="/"><button type="button" className="btn btn-primary m-2">Home</button></Link>
+                    
+                </div>
+                
             </div>
 
-
-            <button type="button"></button>
         </div>
       
     );
